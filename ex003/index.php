@@ -30,12 +30,36 @@
     // $vet = [6, 2, "Roger", 3.5 , false];
     // var_dump($vet);
 
-    class Pessoa { 
-        private string $nome;
-    }
+    // class Pessoa { 
+    //     private string $nome;
+    // }
 
-    $p = new Pessoa;
-    var_dump($p);
+    // $p = new Pessoa;
+    // var_dump($p);
+
+    // $nome = 'Roger';
+    // $sobrenome = 'Valentim';
+    // echo "$nome $sobrenome \u{1F596}"
+
+    // const TREINADOR = "Rogério Ceni";
+    // echo "O treinador do São Paulo fc é o " . TREINADOR;
+
+    // echo "Estamos no ano de " . date('Y');
+
+    // $nome = "Rodrigo";
+    // $sobrenome = "Nogueira";
+
+    // echo "$nome \"Minotauro\" $sobrenome";//sequência de escape
+
+    //Heredoc
+    $serie = "vikings";
+    $ano = date('Y');
+
+    echo <<< FRASE
+
+    Eu estou assistindo a série $serie em $ano
+
+    FRASE;
     ?>
 </body>
 </html>
