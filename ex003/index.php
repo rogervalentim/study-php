@@ -52,14 +52,22 @@
     // echo "$nome \"Minotauro\" $sobrenome";//sequência de escape
 
     //Heredoc
-    $serie = "vikings";
-    $ano = date('Y');
+    // $serie = "vikings";
+    // $ano = date('Y');
 
-    echo <<< FRASE
+    // echo <<< FRASE
 
-    Eu estou assistindo a série $serie em $ano
+    // Eu estou assistindo a série $serie em $ano
 
-    FRASE;
+    // FRASE;
+
+    // Expressão aritmética
+
+    // $res = 5 + 2 / 2;
+    // echo "O resultado é $res";
+
+    $res = 50 / 2 + 3  ** 2;
+    echo "O resultado é $res";
     ?>
 </body>
 </html>
