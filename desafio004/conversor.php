@@ -11,7 +11,18 @@
     <main>
         <h1>Conversor de moedas</h1>
     <?php
-    $cotação = 5.05;
+    $inicio = date('m-d-Y', strtotime('-7 days'));
+    $fim = date('m-d-Y');
+    $url =
+        'https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial=\'' .
+        $inicio .
+        '\'&@dataFinalCotacao=\'' .
+        $fim .
+        '\'&$top=1&$orderby=dataHoraCotacao%20desc&$format=json&$select=cotacaoCompra,dataHoraCotacao';
+
+    $dados = json_decode(file_get_contents($url), true);
+
+    $cotação = $dados['value'][0]['cotacaoCompra'];
 
     $real = $_GET['numero'] ?? 0;
 
@@ -21,10 +32,11 @@
 
     $padrão = numfmt_create('pt_BR', NumberFormatter::CURRENCY);
 
-    echo "<p>Seus " .
+    echo '<p>Seus ' .
         numfmt_format_currency($padrão, $real, 'BRL') .
-        " equivalem a <strong>" .
-        numfmt_format_currency($padrão, $dolar, 'USD') . "</strong></p>";
+        ' equivalem a <strong>' .
+        numfmt_format_currency($padrão, $dolar, 'USD') .
+        '</strong></p>';
     ?>
     <button onclick="javascript:history.go(-1)">Voltar</button>
     </main>
